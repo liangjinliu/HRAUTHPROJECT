@@ -1,0 +1,180 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CCP_binding_ICS_Data_filtering" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_TransactionItem" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="io_DT_ICS" Type="InArgument(scg:Dictionary(x:String, sd:DataTable))" />
+    <x:Property Name="argdicOutSiteLinks" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1145,2205</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CCP_binding_ICS_Data_filtering_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="CCP_binding_ICS_Data_filtering" sap:VirtualizedContainerService.HintSize="1031,2140" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap2010:Annotation.AnnotationText="过滤ICS描述，ICS新增状态" DisplayName="Filter ICs description and add status of ICs" sap:VirtualizedContainerService.HintSize="989,770" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strICSDescriptionFilteringResult" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="If Not String.IsNullOrEmpty(argdrInProcessingRecord(&quot;ICS描述&quot;).ToString)&#xD;&#xA;&#x9;argstrOutResult = argdrInProcessingRecord(&quot;ICS描述&quot;).ToString&#xD;&#xA;&#x9;Return&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;If Not (argdrInProcessingRecord(&quot;ICS权限状态&quot;).ToString.Contains(&quot;新增用戶成功&quot;) And &#xD;&#xA;&#x9;argdrInProcessingRecord(&quot;ICS权限状态&quot;).ToString.Contains(&quot;添加權限信息成功&quot;) And &#xD;&#xA;&#x9;(argdrInProcessingRecord(&quot;ICS权限状态&quot;).ToString.Contains(&quot;添加站点全部成功&quot;) Or argdrInProcessingRecord(&quot;ICS权限状态&quot;).ToString.Contains(&quot;添加站点部分失败&quot;)))&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;argstrOutResult = argdrInProcessingRecord(&quot;ICS权限状态&quot;).ToString&#xD;&#xA;&#x9;Return&#xD;&#xA;End If" DisplayName="Invoke code 过滤ICS描述，ICS新增状态" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+        <ui:InvokeCode.Arguments>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="argdrInProcessingRecord">[io_TransactionItem]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="argstrOutResult">[strICSDescriptionFilteringResult]</OutArgument>
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <If Condition="[Not String.IsNullOrEmpty(strICSDescriptionFilteringResult)]" sap:VirtualizedContainerService.HintSize="484,443" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;CCP绑定ICS_数据过滤: &quot; + strICSDescriptionFilteringResult]" />
+            <Throw Exception="[new UiPath.Core.BusinessRuleException(&quot;CCP绑定ICS_数据过滤: &quot; + strICSDescriptionFilteringResult)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="根据部门信息表的“站点”字符串，取ICS2.0站点对照表中的站点链接" sap:VirtualizedContainerService.HintSize="989,1238" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strDataFilteringResult" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim strSiteLink As String = &quot;&quot;&#xD;&#xA;Dim strSites As String = &quot;&quot;&#xD;&#xA;argdicOutSiteLinks = New Dictionary(Of String,String)&#xD;&#xA;&#xD;&#xA;If String.IsNullOrEmpty(argdrInOutProcessingRecord(&quot;TMQ部门编码&quot;).ToString)&#xD;&#xA;&#x9;argstrOutResult=&quot;CCP绑定ICS失败: 部门权限信息表 TMQ部门编码为空&quot;&#xD;&#xA;&#x9;argdrInOutProcessingRecord(&quot;CCP绑定ICS状态&quot;) = argstrOutResult&#xD;&#xA;&#x9;Return&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;If argdicInICSPermisson(&quot;部门权限信息&quot;).Select(&quot; [部门编号] =&quot; + argdrInOutProcessingRecord(&quot;TMQ部门编码&quot;).ToString.Trim).Length &lt; 1&#xD;&#xA;&#x9;argstrOutResult = &quot;CCP绑定ICS失败: 未找到该部门编码的权限信息&quot;&#xD;&#xA;&#x9;argdrInOutProcessingRecord(&quot;CCP绑定ICS状态&quot;) = argstrOutResult&#xD;&#xA;&#x9;Return&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;strSites = argdicInICSPermisson(&quot;部门权限信息&quot;).Select(&quot; [部门编号] =&quot; + argdrInOutProcessingRecord(&quot;TMQ部门编码&quot;).ToString.Trim).FirstOrDefault().Item(&quot;站点&quot;).ToString&#xD;&#xA;&#x9;&#x9;&#x9; &#xD;&#xA;If  String.IsNullOrEmpty(strSites)&#xD;&#xA;&#x9;argstrOutResult = &quot;CCP绑定ICS失败: 部门权限信息表 站点为空&quot;&#xD;&#xA;&#x9;argdrInOutProcessingRecord(&quot;CCP绑定ICS状态&quot;) = argstrOutResult&#xD;&#xA;&#x9;Return&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;For Each item As String In Split(strSites,&quot;,&quot;)&#xD;&#xA;&#x9;If  String.IsNullOrEmpty(item)&#xD;&#xA;&#x9;&#x9;argstrOutResult = If(String.IsNullOrEmpty(argstrOutResult),&quot;CCP绑定ICS失败: &quot;, argstrOutResult + &quot;; &quot;) + &quot;部门权限信息表 站点格式不正确&quot; + strSites&#x9;&#x9;&#x9;   &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;    &#xD;&#xA;&#x9;Else&#xD;&#xA;&#x9;&#x9;If argdicInICSPermisson(&quot;ICS2.0站点&quot;).Select(&quot; [站点] = '&quot; + item.ToString.Trim + &quot;'&quot;).Length &gt; 0&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;strSiteLink = argdicInICSPermisson(&quot;ICS2.0站点&quot;).Select(&quot; [站点] = '&quot; + item.ToString.Trim + &quot;'&quot;).FirstOrDefault().Item(&quot;站点网址&quot;).ToString &#xD;&#xA;&#x9;&#x9;&#x9;argdicOutSiteLinks(item.Trim) = strSiteLink&#xD;&#xA;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;argstrOutResult = If(String.IsNullOrEmpty(argstrOutResult),&quot;&quot;, argstrOutResult + &quot;; &quot;) + item.Trim + &quot;: ICS2.0站点表 未找到该站点&quot; &#xD;&#xA;&#x9;&#x9;End If&#xD;&#xA;&#x9;End If&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;If Not String.IsNullOrEmpty(argstrOutResult)&#xD;&#xA; &#x9;argdrInOutProcessingRecord(&quot;CCP绑定ICS状态&quot;) = argstrOutResult&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke code 取站点链接" sap:VirtualizedContainerService.HintSize="947,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+        <ui:InvokeCode.Arguments>
+          <InOutArgument x:TypeArguments="sd:DataRow" x:Key="argdrInOutProcessingRecord">[io_TransactionItem]</InOutArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)" x:Key="argdicInICSPermisson">[io_DT_ICS]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="argstrOutResult">[strDataFilteringResult]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="argdicOutSiteLinks">[argdicOutSiteLinks]</OutArgument>
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="947,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;CCP绑定ICS状态:    &quot; + io_TransactionItem(&quot;CCP绑定ICS状态&quot;).ToString]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="947,95" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;站点链接: &quot; + String.Join(&quot;,&quot;,argdicOutSiteLinks.Values)]" />
+      <If Condition="[Not String.IsNullOrEmpty(strDataFilteringResult) and argdicOutSiteLinks.Count = 0]" sap:VirtualizedContainerService.HintSize="947,672" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;CCP绑定ICS_数据过滤: &quot; + strDataFilteringResult]" />
+            <Throw DisplayName="Throw BE" Exception="[new UiPath.Core.BusinessRuleException(&quot;CCP绑定ICS_数据过滤: &quot; + strDataFilteringResult)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="526,509" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If sap2010:Annotation.AnnotationText="部分站点不存在，将添加存在的站点&#xA;" Condition="[Not String.IsNullOrEmpty(strDataFilteringResult) and argdicOutSiteLinks.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="484,417" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,187" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;CCP绑定ICS_数据过滤: &quot; + strDataFilteringResult]" />
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+  </Sequence>
+</Activity>

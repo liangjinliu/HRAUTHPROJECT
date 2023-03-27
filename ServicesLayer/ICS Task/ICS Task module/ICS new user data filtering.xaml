@@ -1,0 +1,237 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ICS_new_user_data_filtering" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_DT_ICS" Type="InArgument(scg:Dictionary(x:String, sd:DataTable))" />
+    <x:Property Name="io_TransactionItem" Type="InOutArgument(sd:DataRow)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1145,2643</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ICS_new_user_data_filtering_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="27">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="ics new user data filtering" DisplayName="ICS_new_user_data_filtering" sap:VirtualizedContainerService.HintSize="1047,2578" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="OutResult" />
+      <Variable x:TypeArguments="sd:DataRow[]" Name="arrDrICSPermission" />
+      <Variable x:TypeArguments="sd:DataRow" Name="drICSDepartmentInfo" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="If String.IsNullOrEmpty(argdrInOutProcessingRecord(&quot;TMQ部门编码&quot;).ToString.Trim)&#xD;&#xA;&#x9;argstrOutResult=&quot;TMQ部门编码为空&quot;&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;If String.IsNullOrEmpty(argdrInOutProcessingRecord(&quot;部门长描述&quot;).ToString.Trim)&#xD;&#xA;&#x9;argstrOutResult=If(String.IsNullOrEmpty(argstrOutResult),&quot;&quot;,argstrOutResult + &quot;;&quot;) + &quot;部门长描述为空&quot;&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;argdrInOutProcessingRecord(&quot;ICS描述&quot;) = If(String.IsNullOrEmpty(argstrOutResult),&quot;&quot;,argstrOutResult)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="1005,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)" x:Key="argdicInICSPermisson">[io_DT_ICS]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="argdrInOutProcessingRecord">[io_TransactionItem]</InOutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="argstrOutResult">[OutResult]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <If Condition="[not String.IsNullOrEmpty(io_TransactionItem(&quot;ICS描述&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="1005,254" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Throw Exception="[new BusinessRuleException(&quot;ICS_新增用户数据过滤结果: &quot; +io_TransactionItem(&quot;ICS描述&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+      </If.Then>
+    </If>
+    <Assign sap2010:Annotation.AnnotationText="Check whether you are a member of the ICs authority group" DisplayName="Assign 检查是否是ICS权限组的人员" sap:VirtualizedContainerService.HintSize="1005,107" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataRow[]">[arrDrICSPermission]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataRow[]">[io_DT_ICS("ICS2.0对应权限组").Select(" [部门编号] = '" + io_TransactionItem("TMQ部门编码").ToString.Trim + "' and [PS对应小组描述] = '" + io_TransactionItem("部门长描述").ToString.Trim + "'")]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <If Condition="[arrDrICSPermission.Length&gt;0]" DisplayName="If arrDrICSPermission.Length&gt;0" sap:VirtualizedContainerService.HintSize="1005,1810" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap2010:Annotation.AnnotationText="检查该部门的部门权限信息字段是否为空" sap:VirtualizedContainerService.HintSize="655,1647" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="strErrorMsg" />
+            <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[new Dictionary(of string,string)]" Name="dicStaffPermission" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[io_DT_ICS(&quot;部门权限信息&quot;).Select(&quot; [部门编号] =&quot; + io_TransactionItem(&quot;TMQ部门编码&quot;).ToString.Trim).Length &gt; 0]" sap:VirtualizedContainerService.HintSize="613,378" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Assign DisplayName="Assign " sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="sd:DataRow">[drICSDepartmentInfo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="sd:DataRow">[io_DT_ICS("部门权限信息").Select(" [部门编号] =" + io_TransactionItem("TMQ部门编码").ToString.Trim).FirstOrDefault()]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="305,215" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[io_TransactionItem("ICS描述")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String" xml:space="preserve">[if(String.IsNullOrEmpty(io_TransactionItem("ICS描述").ToString), "", io_TransactionItem("ICS描述").ToString + ";  " ) + "部门权限信息表: 找不到此部门编码" + io_TransactionItem("TMQ部门编码").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Throw DisplayName="Throw BE" Exception="[new BusinessRuleException(&quot;ICS_新增用户_检查部门权限信息: 部门权限信息表: 找不到此部门编码&quot; + io_TransactionItem(&quot;TMQ部门编码&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </Sequence>
+            </If.Else>
+          </If>
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Access permission related information" Code="argdicOutStaffPermission = new Dictionary(of String, String)&#xA;argdicOutStaffPermission(&quot;登录仓&quot;) = argdrInDepartmentInfo(&quot;部门编号&quot;).ToString.Trim&#xA;argdicOutStaffPermission(&quot;成本权限&quot;) = argdrInDepartmentInfo(&quot;成本权限&quot;).ToString.Trim&#xA;argdicOutStaffPermission(&quot;区域&quot;) = argdrInDepartmentInfo(&quot;区域权限&quot;).ToString.Trim&#xA;argdicOutStaffPermission(&quot;货类&quot;) = argdrInDepartmentInfo(&quot;货类权限&quot;).ToString.Trim&#xA;argdicOutStaffPermission(&quot;站点&quot;) = argdrInDepartmentInfo(&quot;站点&quot;).ToString.Trim&#xA;argdicOutStaffPermission(&quot;用户组&quot;) = argstrInUserGroup.Trim&#xA;&#xA;For Each key As String In argdicOutStaffPermission.Keys&#xA;&#x9;&#xA;&#x9;If String.IsNullOrEmpty(argdicOutStaffPermission(key))&#xA;&#x9;&#x9;argstrOutErrorMsg = If(String.IsNullOrEmpty(argstrOutErrorMsg),&quot;&quot;, argstrOutErrorMsg + &quot;; &quot;) + key + &quot;为空&quot; &#xA;&#x9;End If&#xA;&#x9;&#xA;Next&#xA;&#x9;" DisplayName="Invoke code Access permission related information" sap:VirtualizedContainerService.HintSize="613,195" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="sd:DataRow" x:Key="argdrInDepartmentInfo">[drICSDepartmentInfo]</InArgument>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="argdicOutStaffPermission">[dicStaffPermission]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="argstrOutErrorMsg">[strErrorMsg]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argstrInUserGroup">[arrDrICSPermission.FirstOrDefault().Item("权限组编码").ToString.Trim]</InArgument>
+            </ui:InvokeCode.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeCode>
+          <If Condition="[Not String.IsNullOrEmpty(strErrorMsg)]" sap:VirtualizedContainerService.HintSize="613,409" sap2010:WorkflowViewState.IdRef="If_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="305,215" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[io_TransactionItem("ICS描述")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[if(String.IsNullOrEmpty(io_TransactionItem("ICS描述").ToString), "", io_TransactionItem("ICS描述").ToString + "; ") + "部门权限信息表: " + strErrorMsg]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Throw DisplayName="Throw BE" Exception="[new BusinessRuleException(&quot;ICS_新增用户_检查部门权限信息: 部门权限信息表: &quot; + strErrorMsg)]" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </Sequence>
+            </If.Then>
+          </If>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ICS Add user workflow" sap:VirtualizedContainerService.HintSize="613,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ServicesLayer\ICS Task\ICS Task module\ICS Add user.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_TransactionItem">[io_TransactionItem]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ICS Add site workflow" sap:VirtualizedContainerService.HintSize="613,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ServicesLayer\ICS Task\ICS Task module\ICS Add site.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_TransactionItem">[io_TransactionItem]</InOutArgument>
+              <InArgument x:TypeArguments="sd:DataRow" x:Key="argdrInICSPermission">[drICSDepartmentInfo]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ICS add permission workflow" sap:VirtualizedContainerService.HintSize="613,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ServicesLayer\ICS Task\ICS Task module\ICS add permission.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_TransactionItem">[io_TransactionItem]</InOutArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="argdicInStaffPermission">[dicStaffPermission]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="305,153" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[io_TransactionItem("ICS权限状态")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">["无需开通"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>

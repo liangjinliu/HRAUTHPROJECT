@@ -1,0 +1,374 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="token" this:token.in_tokenUrl="https://sz.ctfsso.com/auth/api_auth/token" this:token.in_clientIdFrom="rpa_prd" this:token.in_clientSecretFrom="Mxr0CP5qXsOtPtnq" this:token.in_clientIdTo="hr_data" this:token.in_scope="rpaRead" this:token.in_hrDataUrl="https://dataplatform-api.ctf.com.cn/zdf_bigdata/ctf_prd/ads/personnel/getIncrementStaff" this:token.in_deptDataUrl="https://dataplatform-api.ctf.com.cn/zdf_bigdata/ctf_prd/ads/queryGetDeptInfo" this:token.in_emailKey="rapgainemail" this:token.in_secrKey="rapgainpwd" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_tokenUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_clientIdFrom" Type="InArgument(x:String)" />
+    <x:Property Name="in_clientSecretFrom" Type="InArgument(x:String)" />
+    <x:Property Name="in_clientIdTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_scope" Type="InArgument(x:String)" />
+    <x:Property Name="in_hrDataUrl" Type="InArgument(x:String)" />
+    <x:Property Name="io_DT_Custom" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_deptDataUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_emailKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_secrKey" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1451,3986</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>token_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="41">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Security.Cryptography</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="HrDataGetData" sap:VirtualizedContainerService.HintSize="602,3921" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="tokenJsonStr" />
+      <Variable x:TypeArguments="x:String" Name="accessTokenStr" />
+      <Variable x:TypeArguments="njl:JObject" Name="tokenJsonObj" />
+      <Variable x:TypeArguments="x:String" Name="hrDataJsonStr" />
+      <Variable x:TypeArguments="x:Int32" Name="statusStr" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="headStr" />
+      <Variable x:TypeArguments="x:String" Name="str1" />
+      <Variable x:TypeArguments="x:Int32" Name="pageIndex" />
+      <Variable x:TypeArguments="x:Int32" Name="totalPage" />
+      <Variable x:TypeArguments="x:Int32" Name="pageSur" />
+      <Variable x:TypeArguments="x:String" Name="deptDataJsonStr" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" Name="deptMesDic" />
+      <Variable x:TypeArguments="x:String" Name="decrptStr" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;client_id_from&quot;&quot;: &quot;&quot;&quot;+in_clientIdFrom+&quot;&quot;&quot;,&quot;&quot;client_secret_from&quot;&quot;: &quot;&quot;&quot;+in_clientSecretFrom+&quot;&quot;&quot;,&quot;&quot;client_id_to&quot;&quot;: &quot;&quot;&quot;+in_clientIdTo+&quot;&quot;&quot;,&quot;&quot;scope&quot;&quot;: &quot;&quot;&quot;+in_scope+&quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="请求 Access-Token" EnableSSLVerification="True" EndPoint="[in_tokenUrl]" sap:VirtualizedContainerService.HintSize="560,59" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[tokenJsonStr]" TimeoutMS="6000">
+      <ui:HttpClient.Attachments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Attachments>
+      <ui:HttpClient.Cookies>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Cookies>
+      <ui:HttpClient.Headers>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Headers>
+      <ui:HttpClient.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Parameters>
+      <ui:HttpClient.UrlSegments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.UrlSegments>
+    </ui:HttpClient>
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="反序列化 JSON" sap:VirtualizedContainerService.HintSize="560,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[tokenJsonObj]" JsonString="[tokenJsonStr]" />
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[accessTokenStr]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[tokenJsonObj("access_token").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[accessTokenStr]" />
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[deptMesDic]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[New Dictionary(Of String,Dictionary(Of String,String))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环 部门获取" sap:VirtualizedContainerService.HintSize="560,760" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,591" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;month_end&quot;&quot;: &quot;&quot;&quot;+Now.ToString(&quot;yyyyMM&quot;)+&quot;&quot;&quot;,&quot;&quot;setid&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_deptDataUrl]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" ResponseHeaders="[headStr]" Result="[deptDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="6000">
+            <ui:HttpClient.Attachments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Attachments>
+            <ui:HttpClient.Cookies>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Cookies>
+            <ui:HttpClient.Headers>
+              <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Accept-Language">zh-CN</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="X-AURORA-ZDF-TOKEN">[accessTokenStr]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="currentPage">[pageIndex.ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="pageSize">10000</InArgument>
+            </ui:HttpClient.Headers>
+            <ui:HttpClient.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Parameters>
+            <ui:HttpClient.UrlSegments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.UrlSegments>
+          </ui:HttpClient>
+          <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[deptDataJsonStr]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="string dicKeyString = &quot;&quot;;&#xA;&#xA;JObject json = JObject.Parse(in_deptDataJsonStr);&#xA;foreach(var item in json[&quot;content&quot;]){&#xA;&#x9;dicKeyString = item[&quot;setid&quot;].ToString()+&quot;-&quot;+item[&quot;deptid&quot;].ToString();&#xA;&#x9;&#xA;&#x9;if(io_deptMesDic.ContainsKey(dicKeyString)){&#xA;&#x9;&#x9;continue;&#xA;&#x9;}else{&#xA;&#x9;&#x9;io_deptMesDic[dicKeyString] = new Dictionary&lt;string,string&gt;();&#xA;&#x9;&#x9;io_deptMesDic[dicKeyString][&quot;eas_dept&quot;] = item[&quot;eas_dept&quot;].ToString();&#xA;&#x9;&#x9;io_deptMesDic[dicKeyString][&quot;z_dept_function&quot;] = item[&quot;z_dept_function&quot;].ToString();&#xA;&#x9;}&#xA;}&#xA;out_pageSur = Convert.ToInt32( json[&quot;totalSize&quot;]) -  in_pageIndex * 10000;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_deptDataJsonStr">[deptDataJsonStr]</InArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_pageSur">[pageSur]</OutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_pageIndex">[pageIndex]</InArgument>
+              <InOutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_deptMesDic">[deptMesDic]</InOutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[pageIndex+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环" sap:VirtualizedContainerService.HintSize="560,760" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,591" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;bgn_date&quot;&quot;: &quot;&quot;&quot;+Now.AddDays(0).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;: &quot;&quot;&quot;+Now.AddDays(0).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;,&quot;&quot;bu&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_hrDataUrl]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" ResponseHeaders="[headStr]" Result="[hrDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="6000">
+            <ui:HttpClient.Attachments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Attachments>
+            <ui:HttpClient.Cookies>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Cookies>
+            <ui:HttpClient.Headers>
+              <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Accept-Language">zh-CN</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="X-AURORA-ZDF-TOKEN">[accessTokenStr]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="currentPage">[pageIndex.ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="pageSize">1000</InArgument>
+            </ui:HttpClient.Headers>
+            <ui:HttpClient.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Parameters>
+            <ui:HttpClient.UrlSegments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.UrlSegments>
+          </ui:HttpClient>
+          <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[hrDataJsonStr]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="string dicKeyString = &quot;&quot;;&#xA;JObject json = JObject.Parse(in_hrDataJsonStr);&#xA;foreach(var item in json[&quot;content&quot;]){&#xA;&#x9;DataRow row = io_DT_Custom.NewRow();&#xA;&#x9;row[&quot;工号&quot;]=item[&quot;staff_code&quot;].ToString();&#xA;&#x9;row[&quot;姓名&quot;] = item[&quot;staff_name&quot;].ToString();&#xA;&#x9;row[&quot;职级ID&quot;] = item[&quot;supv_lvl_id&quot;].ToString();&#xA;&#x9;row[&quot;职级&quot;] = item[&quot;supv_lvl_descr&quot;].ToString();&#xA;&#x9;row[&quot;部门长描述&quot;] = item[&quot;dept_descr&quot;].ToString();&#xA;&#x9;row[&quot;CCP区域标识&quot;] =&quot;&quot;;&#xA;&#x9;row[&quot;业务单位&quot;] = item[&quot;bu&quot;].ToString();&#xA;&#x9;row[&quot;officer_cd&quot;] = item[&quot;officer_cd&quot;].ToString();&#xA;&#x9;row[&quot;直属主管姓名&quot;] = item[&quot;supervisor_name&quot;].ToString();&#xA;&#x9;row[&quot;直属主管邮箱&quot;] =&quot;&quot;;&#xA;&#x9;row[&quot;公司ID&quot;] = item[&quot;company&quot;].ToString();&#xA;&#x9;row[&quot;CCP/SSO/I通宝初始密码&quot;] =  item[&quot;sso_default_pwd&quot;].ToString();&#xA;&#x9;row[&quot;主管工号&quot;] = item[&quot;supervisor_id&quot;].ToString();&#xA;&#x9;row[&quot;职位&quot;] = item[&quot;jobcode_descr&quot;].ToString();&#xA;&#x9;row[&quot;拼音&quot;] = item[&quot;staff_name_ac&quot;].ToString();&#xA;&#x9;row[&quot;性别&quot;] = item[&quot;sex_descr_zhs&quot;].ToString();&#xA;&#x9;row[&quot;入职日期&quot;] = item[&quot;hire_dt&quot;].ToString();&#xA;&#x9;row[&quot;备选员工ID&quot;] =&quot;&quot;;&#xA;&#x9;row[&quot;员工类别&quot;] = item[&quot;empl_class&quot;].ToString();&#xA;&#x9;row[&quot;员工所在城市&quot;] = item[&quot;loc_descr&quot;].ToString();&#xA;&#x9;row[&quot;PS部门编号&quot;] = item[&quot;deptid&quot;].ToString();&#xA;&#x9;row[&quot;公司属性&quot;] = item[&quot;company_type_descr&quot;].ToString();&#xA;&#x9;row[&quot;邮箱&quot;] = item[&quot;email_address&quot;].ToString();&#xA;&#x9;dicKeyString = item[&quot;bu&quot;].ToString()+&quot;-&quot;+item[&quot;deptid&quot;].ToString();&#xA;&#x9;if(in_deptMesDic.ContainsKey(dicKeyString)){&#xA;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = in_deptMesDic[dicKeyString][&quot;eas_dept&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;部门职能&quot;] = in_deptMesDic[dicKeyString][&quot;z_dept_function&quot;].ToString();&#xA;&#x9;}else{&#xA;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = &quot;&quot;;&#xA;&#x9;&#x9;row[&quot;部门职能&quot;] =&quot;&quot;;&#xA;&#x9;}&#xA;&#x9; io_DT_Custom.Rows.Add(row);&#xA;}&#xA;&#xA;out_pageSur = Convert.ToInt32( json[&quot;totalSize&quot;]) -  in_pageIndex * 1000;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_hrDataJsonStr">[hrDataJsonStr]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_Custom">[io_DT_Custom]</InOutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_pageSur">[pageSur]</OutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_pageIndex">[pageIndex]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" x:Key="in_deptMesDic">[deptMesDic]</InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[pageIndex+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_DT_Custom]" DisplayName="对于数据表中的每一行" sap:VirtualizedContainerService.HintSize="560,1337" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="526,1214" sap2010:WorkflowViewState.IdRef="Sequence_24">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[CurrentRow(&quot;邮箱&quot;).ToString.Trim.Length &gt; 0]" DisplayName="IF 条件" sap:VirtualizedContainerService.HintSize="484,541" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="序列" sap:VirtualizedContainerService.HintSize="376,357" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_decrpt = &quot;&quot;;&#xA;in_encrpt = System.Text.Encoding.Default.GetString(Convert.FromBase64String(in_encrpt));&#xA;byte[] finalKey = new byte[16];&#xA;byte[] srcKey = System.Text.Encoding.UTF8.GetBytes(in_key);&#xA;int i = 0;&#xA;foreach (byte b in srcKey)&#xA;{&#xA;&#x9;finalKey[i++ % 16] ^= b;&#xA;}&#xA;System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create();&#xA;aes.Key = finalKey;&#xA;aes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;&#xA;aes.Mode = System.Security.Cryptography.CipherMode.ECB;&#xA;System.Security.Cryptography.ICryptoTransform decryptor = aes.CreateDecryptor();&#xA;in_encrpt = in_encrpt.Replace(&quot; &quot;, &quot;&quot;);&#xA;if ((in_encrpt.Length % 2) != 0)&#xA;{&#xA;&#x9;in_encrpt += &quot; &quot;;&#xA;}&#xA;byte[] returnBytes = new byte[in_encrpt.Length / 2];&#xA;for (int m = 0; m &lt; returnBytes.Length; m++)&#xA;{&#xA;&#x9;returnBytes[m] = Convert.ToByte(in_encrpt.Substring(m * 2, 2), 16);&#xA;}&#xA;byte[] resultArray = decryptor.TransformFinalBlock(returnBytes, 0, returnBytes.Length);&#xA;out_decrpt = System.Text.Encoding.UTF8.GetString(resultArray);" DisplayName="加密字符串解密" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                    <ui:InvokeCode.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_encrpt">[CurrentRow("邮箱").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_key">[in_emailKey]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_decrpt">[decrptStr]</OutArgument>
+                    </ui:InvokeCode.Arguments>
+                  </ui:InvokeCode>
+                  <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("邮箱")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[decrptStr]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+            </If>
+            <If Condition="[CurrentRow(&quot;CCP/SSO/I通宝初始密码&quot;).ToString.Trim.Length &gt; 0]" DisplayName="IF 条件" sap:VirtualizedContainerService.HintSize="484,541" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="序列" sap:VirtualizedContainerService.HintSize="376,357" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="in_encrpt = System.Text.Encoding.Default.GetString(Convert.FromBase64String(in_encrpt));&#xA;byte[] finalKey = new byte[16];&#xA;byte[] srcKey = System.Text.Encoding.UTF8.GetBytes(in_key);&#xA;int i = 0;&#xA;foreach (byte b in srcKey)&#xA;{&#xA;&#x9;finalKey[i++ % 16] ^= b;&#xA;}&#xA;System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create();&#xA;aes.Key = finalKey;&#xA;aes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;&#xA;aes.Mode = System.Security.Cryptography.CipherMode.ECB;&#xA;System.Security.Cryptography.ICryptoTransform decryptor = aes.CreateDecryptor();&#xA;in_encrpt = in_encrpt.Replace(&quot; &quot;, &quot;&quot;);&#xA;if ((in_encrpt.Length % 2) != 0)&#xA;{&#xA;&#x9;in_encrpt += &quot; &quot;;&#xA;}&#xA;byte[] returnBytes = new byte[in_encrpt.Length / 2];&#xA;for (int m = 0; m &lt; returnBytes.Length; m++)&#xA;{&#xA;&#x9;returnBytes[m] = Convert.ToByte(in_encrpt.Substring(m * 2, 2), 16);&#xA;}&#xA;byte[] resultArray = decryptor.TransformFinalBlock(returnBytes, 0, returnBytes.Length);&#xA;out_decrpt = System.Text.Encoding.UTF8.GetString(resultArray);" DisplayName="加密字符串解密" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_4" Language="CSharp">
+                    <ui:InvokeCode.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_encrpt">[CurrentRow("CCP/SSO/I通宝初始密码").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_key">[in_secrKey]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_decrpt">[decrptStr]</OutArgument>
+                    </ui:InvokeCode.Arguments>
+                  </ui:InvokeCode>
+                  <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("CCP/SSO/I通宝初始密码")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[decrptStr]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:WriteRange AddHeaders="True" DataTable="[io_DT_Custom]" DisplayName="写入范围" sap:VirtualizedContainerService.HintSize="560,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="test.xlsx" />
+  </Sequence>
+</Activity>
