@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1326,4723</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1326,4638</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>token_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -95,11 +95,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="HrDataGetData" sap:VirtualizedContainerService.HintSize="602,4458" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="HrDataGetData" sap:VirtualizedContainerService.HintSize="602,4573" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="tokenJsonStr" />
       <Variable x:TypeArguments="x:String" Name="accessTokenStr" />
@@ -121,7 +120,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;client_id_from&quot;&quot;: &quot;&quot;&quot;+in_clientIdFrom+&quot;&quot;&quot;,&quot;&quot;client_secret_from&quot;&quot;: &quot;&quot;&quot;+in_clientSecretFrom+&quot;&quot;&quot;,&quot;&quot;client_id_to&quot;&quot;: &quot;&quot;&quot;+in_clientIdTo+&quot;&quot;&quot;,&quot;&quot;scope&quot;&quot;: &quot;&quot;&quot;+in_scope+&quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="请求 Access-Token" EnableSSLVerification="True" EndPoint="[in_tokenUrl]" sap:VirtualizedContainerService.HintSize="560,57" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[tokenJsonStr]" TimeoutMS="6000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;client_id_from&quot;&quot;: &quot;&quot;&quot;+in_clientIdFrom+&quot;&quot;&quot;,&quot;&quot;client_secret_from&quot;&quot;: &quot;&quot;&quot;+in_clientSecretFrom+&quot;&quot;&quot;,&quot;&quot;client_id_to&quot;&quot;: &quot;&quot;&quot;+in_clientIdTo+&quot;&quot;&quot;,&quot;&quot;scope&quot;&quot;: &quot;&quot;&quot;+in_scope+&quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="请求 Access-Token" EnableSSLVerification="True" EndPoint="[in_tokenUrl]" sap:VirtualizedContainerService.HintSize="560,59" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[tokenJsonStr]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -139,7 +138,7 @@
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="反序列化 JSON" sap:VirtualizedContainerService.HintSize="560,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[tokenJsonObj]" JsonString="[tokenJsonStr]" />
-    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[accessTokenStr]</OutArgument>
       </Assign.To>
@@ -147,8 +146,8 @@
         <InArgument x:TypeArguments="x:String">[tokenJsonObj("access_token").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[accessTokenStr]" />
-    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[accessTokenStr]" />
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
       </Assign.To>
@@ -156,7 +155,7 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[deptMesDic]</OutArgument>
       </Assign.To>
@@ -164,15 +163,15 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[New Dictionary(Of String,Dictionary(Of String,String))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环 部门获取" sap:VirtualizedContainerService.HintSize="560,709" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环 部门获取" sap:VirtualizedContainerService.HintSize="560,718" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,544" sap2010:WorkflowViewState.IdRef="Sequence_23">
+        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,549" sap2010:WorkflowViewState.IdRef="Sequence_23">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;month_end&quot;&quot;: &quot;&quot;&quot;+Now.ToString(&quot;yyyyMM&quot;)+&quot;&quot;&quot;,&quot;&quot;setid&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_deptDataUrl]" sap:VirtualizedContainerService.HintSize="334,57" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" ResponseHeaders="[headStr]" Result="[deptDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="600000">
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;month_end&quot;&quot;: &quot;&quot;&quot;+Now.ToString(&quot;yyyyMM&quot;)+&quot;&quot;&quot;,&quot;&quot;setid&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_deptDataUrl]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" ResponseHeaders="[headStr]" Result="[deptDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="600000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>
@@ -194,15 +193,15 @@
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.UrlSegments>
           </ui:HttpClient>
-          <ui:CommentOut DisplayName="注释掉" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut DisplayName="注释掉" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="已忽略的活动" sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_27">
+              <Sequence DisplayName="已忽略的活动" sap:VirtualizedContainerService.HintSize="376,187" sap2010:WorkflowViewState.IdRef="Sequence_27">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[deptDataJsonStr]" />
+                <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[deptDataJsonStr]" />
               </Sequence>
             </ui:CommentOut.Body>
             <sap:WorkflowViewStateService.ViewState>
@@ -220,7 +219,7 @@
               <InOutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_deptMesDic">[deptMesDic]</InOutArgument>
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
-          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_7">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
             </Assign.To>
@@ -237,7 +236,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
       </Assign.To>
@@ -245,15 +244,15 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环" sap:VirtualizedContainerService.HintSize="560,749" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile Condition="[pageSur&gt;0]" DisplayName="后条件循环" sap:VirtualizedContainerService.HintSize="560,760" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,584" sap2010:WorkflowViewState.IdRef="Sequence_22">
+        <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="376,591" sap2010:WorkflowViewState.IdRef="Sequence_22">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;bgn_date&quot;&quot;: &quot;&quot;&quot;+Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;,&quot;&quot;end_date&quot;&quot;:&quot;&quot;&quot;+Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;,&quot;&quot;bu&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_hrDataUrl]" sap:VirtualizedContainerService.HintSize="334,57" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" ResponseHeaders="[headStr]" Result="[hrDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="6000">
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;bgn_date&quot;&quot;: &quot;&quot;&quot;+Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;,&quot;&quot;end_date&quot;&quot;:&quot;&quot;&quot;+Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;&quot;&quot;,&quot;&quot;bu&quot;&quot;: [&quot;&quot;10003&quot;&quot;,&quot;&quot;10005&quot;&quot;,&quot;&quot;10006&quot;&quot;]}&quot;]" BodyFormat="application/json" DisplayName="HTTP 请求" EnableSSLVerification="True" EndPoint="[in_hrDataUrl]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" ResponseHeaders="[headStr]" Result="[hrDataJsonStr]" StatusCode="[statusStr]" TimeoutMS="6000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>
@@ -275,27 +274,17 @@
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.UrlSegments>
           </ui:HttpClient>
-          <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[hrDataJsonStr]" />
-          <ui:InvokeCode ContinueOnError="{x:Null}" Code="string dicKeyString = &quot;&quot;;&#xD;&#xA;JObject json = JObject.Parse(in_hrDataJsonStr);&#xD;&#xA;foreach(var item in json[&quot;content&quot;]){&#xD;&#xA;&#x9;if(item[&quot;company_type_descr&quot;].ToString().Contains(&quot;加盟商&quot;)){&#xD;&#xA;&#x9;&#x9;continue;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if(item[&quot;increment_type&quot;].ToString().Equals(&quot;A&quot;)&amp;&amp;&quot;A,P&quot;.Contains(item[&quot;hr_status&quot;].ToString())){&#xD;&#xA;&#x9;&#x9;DataRow row = io_DT_Custom.NewRow();&#xD;&#xA;&#x9;&#x9;row[&quot;工号&quot;]=item[&quot;staff_code&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;姓名&quot;] = item[&quot;staff_name&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;职级ID&quot;] = item[&quot;supv_lvl_id&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;职级&quot;] = item[&quot;supv_lvl_descr&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;部门长描述&quot;] = item[&quot;dept_descr&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;CCP区域标识&quot;] =&quot;&quot;;&#xD;&#xA;&#x9;&#x9;row[&quot;业务单位&quot;] = item[&quot;bu&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;officer_cd&quot;] = item[&quot;officer_cd&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;直属主管姓名&quot;] = item[&quot;supervisor_name&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;直属主管邮箱&quot;] =&quot;&quot;;&#xD;&#xA;&#x9;&#x9;row[&quot;公司ID&quot;] = item[&quot;company&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;CCP/SSO/I通宝初始密码&quot;] =  item[&quot;sso_default_pwd&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;主管工号&quot;] = item[&quot;supervisor_id&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;职位&quot;] = item[&quot;jobcode_descr&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;拼音&quot;] = item[&quot;staff_name_ac&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;性别&quot;] = item[&quot;sex_descr_zhs&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;入职日期&quot;] = item[&quot;hire_dt&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;备选员工ID&quot;] =&quot;&quot;;&#xD;&#xA;&#x9;&#x9;row[&quot;员工类别&quot;] = item[&quot;empl_class&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;员工所在城市&quot;] = item[&quot;loc_descr&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;PS部门编号&quot;] = item[&quot;deptid&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;公司属性&quot;] = item[&quot;company_type_descr&quot;].ToString();&#xD;&#xA;&#x9;&#x9;row[&quot;邮箱&quot;] = item[&quot;email_address&quot;].ToString();&#xD;&#xA;&#x9;&#x9;dicKeyString = item[&quot;bu&quot;].ToString()+&quot;-&quot;+item[&quot;deptid&quot;].ToString();&#xD;&#xA;&#x9;&#x9;if(in_deptMesDic.ContainsKey(dicKeyString)){&#xD;&#xA;&#x9;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = in_deptMesDic[dicKeyString][&quot;eas_dept&quot;].ToString();&#xD;&#xA;&#x9;&#x9;&#x9;row[&quot;部门职能&quot;] = in_deptMesDic[dicKeyString][&quot;z_dept_function&quot;].ToString();&#xD;&#xA;&#x9;&#x9;}else{&#xD;&#xA;&#x9;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = &quot;&quot;;&#xD;&#xA;&#x9;&#x9;&#x9;row[&quot;部门职能&quot;] =&quot;&quot;;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9; &#x9;io_DT_Custom.Rows.Add(row);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;out_pageSur = Convert.ToInt32( json[&quot;totalSize&quot;]) -  in_pageIndex * 1000;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+          <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[hrDataJsonStr]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="string dicKeyString = &quot;&quot;;&#xA;JObject json = JObject.Parse(in_hrDataJsonStr);&#xA;foreach(var item in json[&quot;content&quot;]){&#xA;&#x9;if(item[&quot;company_type_descr&quot;].ToString().Contains(&quot;加盟商&quot;)){&#xA;&#x9;&#x9;continue;&#xA;&#x9;}&#xA;&#x9;if(item[&quot;increment_type&quot;].ToString().Equals(&quot;A&quot;)&amp;&amp;&quot;A,P&quot;.Contains(item[&quot;hr_status&quot;].ToString())){&#xA;&#x9;&#x9;DataRow row = io_DT_Custom.NewRow();&#xA;&#x9;&#x9;row[&quot;工号&quot;]=item[&quot;staff_code&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;姓名&quot;] = item[&quot;staff_name&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;职级ID&quot;] = item[&quot;supv_lvl_id&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;职级&quot;] = item[&quot;supv_lvl_descr&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;部门长描述&quot;] = item[&quot;dept_descr&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;CCP区域标识&quot;] =&quot;&quot;;&#xA;&#x9;&#x9;row[&quot;业务单位&quot;] = item[&quot;bu&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;officer_cd&quot;] = item[&quot;officer_cd&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;直属主管姓名&quot;] = item[&quot;supervisor_name&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;直属主管邮箱&quot;] =&quot;&quot;;&#xA;&#x9;&#x9;row[&quot;公司ID&quot;] = item[&quot;company&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;CCP/SSO/I通宝初始密码&quot;] =  item[&quot;sso_default_pwd&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;主管工号&quot;] = item[&quot;supervisor_id&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;职位&quot;] = item[&quot;jobcode_descr&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;拼音&quot;] = item[&quot;staff_name_ac&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;性别&quot;] = item[&quot;sex_descr_zhs&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;入职日期&quot;] = item[&quot;hire_dt&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;备选员工ID&quot;] =&quot;&quot;;&#xA;&#x9;&#x9;row[&quot;员工类别&quot;] = item[&quot;empl_class&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;员工所在城市&quot;] = item[&quot;loc_descr&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;PS部门编号&quot;] = item[&quot;deptid&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;公司属性&quot;] = item[&quot;company_type_descr&quot;].ToString();&#xA;&#x9;&#x9;row[&quot;邮箱&quot;] = item[&quot;email_address&quot;].ToString();&#xA;&#x9;&#x9;dicKeyString = item[&quot;bu&quot;].ToString()+&quot;-&quot;+item[&quot;deptid&quot;].ToString();&#xA;&#x9;&#x9;if(in_deptMesDic.ContainsKey(dicKeyString)){&#xA;&#x9;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = in_deptMesDic[dicKeyString][&quot;eas_dept&quot;].ToString();&#xA;&#x9;&#x9;&#x9;row[&quot;部门职能&quot;] = in_deptMesDic[dicKeyString][&quot;z_dept_function&quot;].ToString();&#xA;&#x9;&#x9;}else{&#xA;&#x9;&#x9;&#x9;row[&quot;TMQ部门编码&quot;] = &quot;&quot;;&#xA;&#x9;&#x9;&#x9;row[&quot;部门职能&quot;] =&quot;&quot;;&#xA;&#x9;&#x9;}&#xA;&#x9; &#x9;io_DT_Custom.Rows.Add(row);&#xA;&#x9;}&#xA;&#x9;&#xA;}&#xA;&#xA;out_pageSur = Convert.ToInt32( json[&quot;totalSize&quot;]) -  in_pageIndex * 1000;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
             <ui:InvokeCode.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_hrDataJsonStr">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="hrDataJsonStr" />
-              </InArgument>
-              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_Custom">
-                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_DT_Custom" />
-              </InOutArgument>
-              <OutArgument x:TypeArguments="x:Int32" x:Key="out_pageSur">
-                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="pageSur" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_pageIndex">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="pageIndex" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" x:Key="in_deptMesDic">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" ExpressionText="deptMesDic" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_hrDataJsonStr">[hrDataJsonStr]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_Custom">[io_DT_Custom]</InOutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_pageSur">[pageSur]</OutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_pageIndex">[pageIndex]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" x:Key="in_deptMesDic">[deptMesDic]</InArgument>
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
-          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[pageIndex]</OutArgument>
             </Assign.To>
@@ -312,14 +301,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;进入解密阶段&quot;]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_DT_Custom]" DisplayName="对于数据表中的每一行" sap:VirtualizedContainerService.HintSize="560,1318" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,95" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;进入解密阶段&quot;]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_DT_Custom]" DisplayName="对于数据表中的每一行" sap:VirtualizedContainerService.HintSize="560,1329" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="526,1198" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <Sequence DisplayName="正文" sap:VirtualizedContainerService.HintSize="526,1206" sap2010:WorkflowViewState.IdRef="Sequence_24">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -357,7 +346,7 @@
                 </Sequence>
               </If.Then>
             </If>
-            <If Condition="[CurrentRow(&quot;CCP/SSO/I通宝初始密码&quot;).ToString.Trim.Length &gt; 0]" DisplayName="IF 条件" sap:VirtualizedContainerService.HintSize="484,533" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[CurrentRow(&quot;CCP/SSO/I通宝初始密码&quot;).ToString.Trim.Length &gt; 0]" DisplayName="IF 条件" sap:VirtualizedContainerService.HintSize="484,541" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -365,7 +354,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="序列" sap:VirtualizedContainerService.HintSize="376,356" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <Sequence DisplayName="序列" sap:VirtualizedContainerService.HintSize="376,357" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -378,7 +367,7 @@
                       <OutArgument x:TypeArguments="x:String" x:Key="out_decrpt">[decrptStr]</OutArgument>
                     </ui:InvokeCode.Arguments>
                   </ui:InvokeCode>
-                  <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign DisplayName="分配" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_10">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Object">[CurrentRow("CCP/SSO/I通宝初始密码")]</OutArgument>
                     </Assign.To>
@@ -399,9 +388,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;写入文件&quot;]" />
+    <ui:RemoveDuplicateRows DataTable="[io_DT_Custom]" DisplayName="删除重复行" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[io_DT_Custom]" />
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,95" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;写入文件&quot;]" />
     <ui:OutputDataTable DataTable="[io_DT_Custom]" DisplayName="输出数据表" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[str1]" />
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[str1]" />
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="560,95" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[str1]" />
     <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel 应用程序范围" sap:VirtualizedContainerService.HintSize="560,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;Data\Temp\新员工入职名单&quot;+Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
