@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1451,4353</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1326,4393</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SCM_Add_User_And_Auth_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -76,7 +76,6 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="序列" sap:VirtualizedContainerService.HintSize="926,4288" sap2010:WorkflowViewState.IdRef="Sequence_7">
@@ -703,7 +702,7 @@
       </ui:Click>
       <ui:UiElementExists DisplayName="存在元素 'text  成功!'" Exists="[findElement]" sap:VirtualizedContainerService.HintSize="842,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
         <ui:UiElementExists.Target>
-          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="102e5e9e-161c-4c83-a30f-5add3d8e662a" InformativeScreenshot="de090cf4881c384fefc3abf74d222a11" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='https://scm*.chowtaifook.sz/CSS/User/add_user.aspx - Google C*' /&gt;&lt;ctrl name='scm*t.chowtaifook.sz 显示' role='dialog' /&gt;&lt;ctrl name='成功!' role='text' /&gt;" TimeoutMS="6000">
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="102e5e9e-161c-4c83-a30f-5add3d8e662a" InformativeScreenshot="de090cf4881c384fefc3abf74d222a11" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='scm.chowtaifook.sz/CSS/User/add_user.aspx - Google Chrome' /&gt;&lt;ctrl name='scm.chowtaifook.sz 显示' role='dialog' /&gt;&lt;ctrl name='成功!' role='text' /&gt;" TimeoutMS="6000">
             <ui:Target.WaitForReady>
               <InArgument x:TypeArguments="ui:WaitForReady" />
             </ui:Target.WaitForReady>
@@ -730,7 +729,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b464cac7-a946-4457-92b3-49e6b764efdc" InformativeScreenshot="ee06cc5c14962589f4b3758a3b9d1200" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='https://scm*.chowtaifook.sz/CSS/User/add_user.aspx - Google C*' /&gt;&lt;ctrl name='scm*.chowtaifook.sz 显示' role='dialog' /&gt;&lt;ctrl name='确定' role='push button' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b464cac7-a946-4457-92b3-49e6b764efdc" InformativeScreenshot="ee06cc5c14962589f4b3758a3b9d1200" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='scm.chowtaifook.sz/CSS/User/add_user.aspx*' /&gt;&lt;ctrl name='scm.chowtaifook.sz 显示' role='dialog' /&gt;&lt;ctrl name='确定' role='push button' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
